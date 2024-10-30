@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 
 Widget orderplacedetails({title1, title2, d1, d2}) {
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16), // Increased vertical padding for web
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            "$title1".text.fontWeight(FontWeight.w600).white.make(),
-            "$d1".text.color(Colors.white70).fontWeight(FontWeight.w600).make(),
-          ],
+        Expanded( // Allows for better space management
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              "$title1".text.fontWeight(FontWeight.w600).white.make(),
+              "$d1".text.color(Colors.white70).fontWeight(FontWeight.w600).make(),
+            ],
+          ),
         ),
         ///////////////////////////////////////////////////
         SizedBox(
@@ -24,7 +26,7 @@ Widget orderplacedetails({title1, title2, d1, d2}) {
               "$d2".text.color(Colors.white70).make(),
             ],
           ),
-        )
+        ),
       ],
     ),
   );

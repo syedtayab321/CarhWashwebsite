@@ -21,11 +21,11 @@ class _MainViewState extends State<MainView> {
         controller: controller,
         itemBuilder: (context, index) {
           if (index == 0) {
-            return LoginScreen(
+            return const LoginScreen(
                 //controller: controller,
                 );
           } else {
-            return SingUpScreen(
+            return const SingUpScreen(
                 // controller: controller,
                 );
           }

@@ -13,7 +13,7 @@ class OrderScreen extends StatelessWidget {
       backgroundColor: purpleColor,
       appBar: AppBar(
         backgroundColor: purpleColor,
-        iconTheme: IconThemeData(color: whiteColor),
+        iconTheme: const IconThemeData(color: whiteColor),
         title: "My Orders"
             .text
             .fontWeight(FontWeight.w600)
@@ -21,58 +21,74 @@ class OrderScreen extends StatelessWidget {
             .make(),
       ),
       body:
-          // StreamBuilder(
-          //     stream: Firestoreservices.getAllorders(),
-          //     builder:
-          //         (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          //       if (!snapshot.hasData) {
-          //         return Center(
-          //           child: loadingIndicator(),
-          //         );
-          //       } else if (snapshot.data!.docs.isEmpty) {
-          //         return "No Order Yet!".text.color(darkFontGrey).makeCentered();
-          //       } else {
-          //         var data = snapshot.data!.docs;
-          //         return
+      // StreamBuilder(
+      //     stream: Firestoreservices.getAllorders(),
+      //     builder:
+      //         (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+      //       if (!snapshot.hasData) {
+      //         return Center(
+      //           child: loadingIndicator(),
+      //         );
+      //       } else if (snapshot.data!.docs.isEmpty) {
+      //         return "No Order Yet!".text.color(darkFontGrey).makeCentered();
+      //       } else {
+      //         var data = snapshot.data!.docs;
+      //         return
 
-          ListView.builder(
-              itemCount: 5,
-              //data.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  leading: "${index + 1}"
-                      .text
-                      .fontWeight(FontWeight.bold)
-                      .color(Colors.white70)
-                      .make(),
-                  title: "2335467488Xyz2233"
-                      //data[index]['order_code']
-                      .toString()
-                      .text
-                      .color(whiteColor)
-                      .fontWeight(FontWeight.w600)
-                      .make(),
-                  subtitle: "\$100"
+      Padding(
+        padding: const EdgeInsets.all(16.0), // Add padding for better spacing
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // Display orders in a responsive list
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    color: Colors.white,
+                    elevation: 4,
+                    child: ListTile(
+                      leading: "${index + 1}"
+                          .text
+                          .fontWeight(FontWeight.bold)
+                          .color(Colors.white70)
+                          .make(),
+                      title: "2335467488Xyz2233"
+                      // data[index]['order_code']
+                          .toString()
+                          .text
+                          .color(whiteColor)
+                          .fontWeight(FontWeight.w600)
+                          .make(),
+                      subtitle: "\$100"
                       // data[index]['total_amount']
-                      .toString()
+                          .toString()
                       //.numCurrencyWithLocale()
-                      .text
-                      .color(golden)
-                      .fontWeight(FontWeight.bold)
-                      .make(),
-                  trailing: IconButton(
-                      onPressed: () {
-                        Get.to(() => OrdersDetailScreen(
+                          .text
+                          .color(golden)
+                          .fontWeight(FontWeight.bold)
+                          .make(),
+                      trailing: IconButton(
+                        onPressed: () {
+                          Get.to(() => const OrdersDetailScreen(
                             // data: data[index],
-                            ));
-                      },
-                      icon: Icon(Icons.arrow_forward_ios_rounded),
-                      color: Colors.white70),
-                );
-              }),
-
+                          ));
+                        },
+                        icon: const Icon(Icons.arrow_forward_ios_rounded),
+                        color: Colors.white70,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       //   }
-      // }),
+      // } }),
     );
   }
 }

@@ -15,14 +15,14 @@ class ChatScreen extends StatelessWidget {
         iconTheme: IconThemeData(color: whiteColor),
         backgroundColor: purpleColor,
         title: "Cleanow Wash"
-            //"${controller.friendname}"
+        //"${controller.friendname}"
             .text
             .fontWeight(FontWeight.bold)
             .color(whiteColor)
             .make(),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0), // Increased padding for web
         child: Column(
           children: [
             //////////////
@@ -34,79 +34,82 @@ class ChatScreen extends StatelessWidget {
             //       :
 
             Expanded(
-                child: Container(
-              //color: Colors.teal,
-              child: ListView(
-                children: [
-                  Align(
-                      alignment: Alignment.centerRight, child: senderbubble()),
-                ],
+              child: Container(
+                // color: Colors.teal,
+                child: ListView(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: senderbubble(),
+                    ),
+                  ],
+                ),
+
+                // StreamBuilder(
+                //     stream: Firestoreservices.getChatMessages(
+                //         controller.chatDocid.toString()),
+                //     builder: (BuildContext context,
+                //         AsyncSnapshot<QuerySnapshot> snapshot) {
+                //       if (!snapshot.hasData) {
+                //         return Center(
+                //           child: loadingIndicator(),
+                //         );
+                //       } else if (snapshot.data!.docs.isEmpty) {
+                //         return Center(
+                //           child: "Send a message...."
+                //               .text
+                //               .color(darkFontGrey)
+                //               .make(),
+                //         );
+                //       } else {
+                //         return
+
+                // ListView(
+                //   children:
+                //   snapshot.data!.docs
+                //       .mapIndexed((currentValue, index)
+
+                //        {
+                //     var data = snapshot.data!.docs[index];
+                //     return Align(
+                //         alignment:
+                //             data['uid'] == currentuser!.uid
+                //                 ? Alignment.centerRight
+                //                 : Alignment.centerLeft,
+                //         child:
+                //         senderbubble(data)
+
+                //         );
+                //   }).toList(),
+
+                // );
+                //   }
+                //   ///////////
+                // }),
               ),
-
-              // StreamBuilder(
-              //     stream: Firestoreservices.getChatMessages(
-              //         controller.chatDocid.toString()),
-              //     builder: (BuildContext context,
-              //         AsyncSnapshot<QuerySnapshot> snapshot) {
-              //       if (!snapshot.hasData) {
-              //         return Center(
-              //           child: loadingIndicator(),
-              //         );
-              //       } else if (snapshot.data!.docs.isEmpty) {
-              //         return Center(
-              //           child: "Send a message...."
-              //               .text
-              //               .color(darkFontGrey)
-              //               .make(),
-              //         );
-              //       } else {
-              //         return
-
-              // ListView(
-              //   children:
-              //   snapshot.data!.docs
-              //       .mapIndexed((currentValue, index)
-
-              //        {
-              //     var data = snapshot.data!.docs[index];
-              //     return Align(
-              //         alignment:
-              //             data['uid'] == currentuser!.uid
-              //                 ? Alignment.centerRight
-              //                 : Alignment.centerLeft,
-              //         child:
-              //         senderbubble(data)
-
-              //         );
-              //   }).toList(),
-
-              // );
-              //   }
-              //   ///////////
-              // }),
-            )),
+            ),
             //),
             //////////////
-            10.heightBox,
+            const SizedBox(height: 10), // Added a SizedBox for spacing
 
             ///////
             Row(
               children: [
                 Expanded(
-                    child: TextFormField(
-                  //controller: controller.messagingcontroller,
-                  decoration: const InputDecoration(
+                  child: TextFormField(
+                    // controller: controller.messagingcontroller,
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                        color: textfieldGrey,
-                      )),
+                        borderSide: BorderSide(color: textfieldGrey),
+                      ),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                        color: textfieldGrey,
-                      )),
+                        borderSide: BorderSide(color: textfieldGrey),
+                      ),
                       hintText: "Type a message ...",
-                      hintStyle: TextStyle(color: Colors.white70)),
-                )),
+                      hintStyle: TextStyle(color: Colors.white70),
+                    ),
+                  ),
+                ),
                 IconButton(
                   onPressed: () {
                     // controller.sendmessage(controller.messagingcontroller.text);

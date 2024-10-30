@@ -22,7 +22,7 @@ Widget OrderStatus({icon, title, color, showdone}) {
         children: [
           "$title".text.color(Colors.white70).make(),
           showdone
-              ? Icon(
+              ? const Icon(
                   Icons.done,
                   color: redColor,
                 )

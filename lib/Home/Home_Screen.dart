@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
         showDialog(
             barrierDismissible: false,
             context: context,
-            builder: (context) => ExitDialoge(context));
+            builder: (context) => ExitDialog(context));
         return false;
       },
       child: LayoutBuilder(
